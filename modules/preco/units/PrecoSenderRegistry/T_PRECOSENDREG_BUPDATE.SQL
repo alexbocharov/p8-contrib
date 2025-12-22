@@ -19,6 +19,7 @@ begin
     PKG_IUD.REG(1, 'NAME', :new.NAME, :old.NAME);
     PKG_IUD.REG('SYSTEM', :new.SYSTEM, :old.SYSTEM);
     PKG_IUD.REG('IS_ACTIVE', :new.IS_ACTIVE, :old.IS_ACTIVE);
+    PKG_IUD.REG('CREATED', :new.CREATED, :old.CREATED);
     PKG_IUD.REG('UPDATED', :new.UPDATED, :old.UPDATED);
     PKG_IUD.EPILOGUE;
   end if;
