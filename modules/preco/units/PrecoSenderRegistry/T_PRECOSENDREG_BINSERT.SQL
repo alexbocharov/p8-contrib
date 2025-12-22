@@ -1,7 +1,15 @@
 /* Триггер до добавления */
 create or replace trigger T_PRECOSENDREG_BINSERT
   before insert on PRECOSENDREG for each row
+declare
+  dCURRENT_DATE             date;
 begin
+  /* установка значений полей даты создания и модификации */
+  dCURRENT_DATE := sysdate;
+
+  :new.CREATED := coalesce( :new.CREATED,dCURRENT_DATE );
+  :new.UPDATED := dCURRENT_DATE;
+
   /* регистрация события */
   if ( PKG_IUD.PROLOGUE('PRECOSENDREG', 'I') ) then
     PKG_IUD.REG_RN('RN', :new.RN);

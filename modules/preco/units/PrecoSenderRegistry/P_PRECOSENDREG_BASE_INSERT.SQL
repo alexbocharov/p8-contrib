@@ -7,8 +7,6 @@ create or replace procedure P_PRECOSENDREG_BASE_INSERT
   sNAME                     in varchar2,     -- Наименование
   nSYSTEM                   in number,       -- Система
   nIS_ACTIVE                in number,       -- Активен
-  dCREATED                  in date,         -- Дата создания
-  dUPDATED                  in date,         -- Дата модификации
   nRN                       out number       -- Регистрационный номер
 )
 as
@@ -25,9 +23,7 @@ begin
     CODE,
     NAME,
     SYSTEM,
-    IS_ACTIVE,
-    CREATED,
-    UPDATED
+    IS_ACTIVE
   )
   values
   (
@@ -37,9 +33,7 @@ begin
     sCODE,
     sNAME,
     nSYSTEM,
-    nIS_ACTIVE,
-    dCREATED,
-    dUPDATED
+    nIS_ACTIVE
   );
 end;
 /

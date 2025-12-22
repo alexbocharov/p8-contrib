@@ -6,8 +6,7 @@ create or replace procedure P_PRECOSENDREG_BASE_UPDATE
   sCODE                     in varchar2,     -- Код
   sNAME                     in varchar2,     -- Наименование
   nSYSTEM                   in number,       -- Система
-  nIS_ACTIVE                in number,       -- Активен
-  dUPDATED                  in date          -- Дата модификации
+  nIS_ACTIVE                in number        -- Активен
 )
 as
 begin
@@ -16,8 +15,7 @@ begin
      set CODE = sCODE,
          NAME = sNAME,
          SYSTEM = nSYSTEM,
-         IS_ACTIVE = nIS_ACTIVE,
-         UPDATED = dUPDATED
+         IS_ACTIVE = nIS_ACTIVE
    where RN = nRN
      and COMPANY = nCOMPANY;
 

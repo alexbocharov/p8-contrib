@@ -7,6 +7,9 @@ begin
   PKG_UNCHANGE.CHECK_NE('PRECOSENDREG', 'COMPANY', :new.COMPANY, :old.COMPANY);
   PKG_UNCHANGE.CHECK_NE('PRECOSENDREG', 'CREATED', :new.CREATED, :old.CREATED);
 
+  /* установка значения поля даты модификации */
+  :new.UPDATED := sysdate;
+
   /* регистрация события */
   if ( PKG_IUD.PROLOGUE('PRECOSENDREG', 'U') ) then
     PKG_IUD.REG_RN('RN', :new.RN, :old.RN);

@@ -6,9 +6,7 @@ create or replace procedure P_PRECOSENDREG_UPDATE
   sCODE                     in varchar2,     -- Код
   sNAME                     in varchar2,     -- Наименование
   nSYSTEM                   in number,       -- Система
-  nIS_ACTIVE                in number,       -- Активен
-  dCREATED                  in date,         -- Дата создания
-  dUPDATED                  in date          -- Дата модификации
+  nIS_ACTIVE                in number        -- Активен
 )
 as
   nCRN                      PKG_STD.tREF;    -- Каталог
@@ -32,8 +30,7 @@ begin
     sCODE,
     sNAME,
     nSYSTEM,
-    nIS_ACTIVE,
-    dUPDATED
+    nIS_ACTIVE
   );
 
   /* фиксация окончания выполнения действия */
