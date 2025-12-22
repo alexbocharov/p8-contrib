@@ -12,7 +12,7 @@ CODE              varchar2( 36 ) not null
                   constraint C_PRECOSENDREG_CODE_NB check( rtrim(CODE) is not null ),
 /* Наименование */
 NAME              varchar2( 160 ) not null
-                  constraint C_PRECOSENDREG_NAME_NB check( NAME is null or rtrim(NAME) is not null ),
+                  constraint C_PRECOSENDREG_NAME_NB check( rtrim(NAME) is not null ),
 /* Система */
 SYSTEM            number( 1 ) not null
                   constraint C_PRECOSENDREG_SYSTEM_VAL check( SYSTEM in (0,1) ),

@@ -33,7 +33,6 @@ begin
     sNAME,
     nSYSTEM,
     nIS_ACTIVE,
-    dCREATED,
     dUPDATED
   );
 

@@ -5,6 +5,7 @@ begin
   /* проверка неизменности значений полей */
   PKG_UNCHANGE.CHECK_NE('PRECOSENDREG', 'RN', :new.RN, :old.RN);
   PKG_UNCHANGE.CHECK_NE('PRECOSENDREG', 'COMPANY', :new.COMPANY, :old.COMPANY);
+  PKG_UNCHANGE.CHECK_NE('PRECOSENDREG', 'CREATED', :new.CREATED, :old.CREATED);
 
   /* регистрация события */
   if ( PKG_IUD.PROLOGUE('PRECOSENDREG', 'U') ) then
@@ -15,7 +16,6 @@ begin
     PKG_IUD.REG(1, 'NAME', :new.NAME, :old.NAME);
     PKG_IUD.REG('SYSTEM', :new.SYSTEM, :old.SYSTEM);
     PKG_IUD.REG('IS_ACTIVE', :new.IS_ACTIVE, :old.IS_ACTIVE);
-    PKG_IUD.REG('CREATED', :new.CREATED, :old.CREATED);
     PKG_IUD.REG('UPDATED', :new.UPDATED, :old.UPDATED);
     PKG_IUD.EPILOGUE;
   end if;
