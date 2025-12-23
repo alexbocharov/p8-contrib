@@ -9,8 +9,6 @@ create or replace procedure P_PRECOOUTEXJRHST_BASE_INSERT
   sSTATUS                   in varchar2,     -- Статус
   sERR_CODE                 in varchar2,     -- Код ошибки
   sERR_TEXT                 in varchar2,     -- Текст ошибки
-  dCREATED                  in date,         -- Дата создания
-  dUPDATED                  in date,         -- Дата модификации
   nRN                       out number       -- Регистрационный номер
 )
 as
@@ -28,9 +26,7 @@ begin
     AUTHID,
     STATUS,
     ERR_CODE,
-    ERR_TEXT,
-    CREATED,
-    UPDATED
+    ERR_TEXT
   )
   values
   (
@@ -41,9 +37,7 @@ begin
     sAUTHID,
     sSTATUS,
     sERR_CODE,
-    sERR_TEXT,
-    dCREATED,
-    dUPDATED
+    sERR_TEXT
   );
 end;
 /

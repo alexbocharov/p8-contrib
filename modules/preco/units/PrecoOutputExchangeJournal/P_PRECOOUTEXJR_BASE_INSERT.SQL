@@ -10,8 +10,6 @@ create or replace procedure P_PRECOOUTEXJR_BASE_INSERT
   sMSG_ID                   in varchar2,     -- Идентификатор сообщения
   sSENDER_CODE              in varchar2,     -- Код системы-отправителя
   sSTATUS                   in varchar2,     -- Статус
-  dCREATED                  in date,         -- Дата создания
-  dUPDATED                  in date,         -- Дата модификации
   nRN                       out number       -- Регистрационный номер
 )
 as
@@ -31,9 +29,7 @@ begin
     REPORT_NAME,
     MSG_ID,
     SENDER_CODE,
-    STATUS,
-    CREATED,
-    UPDATED
+    STATUS
   )
   values
   (
@@ -46,9 +42,7 @@ begin
     sREPORT_NAME,
     sMSG_ID,
     sSENDER_CODE,
-    sSTATUS,
-    dCREATED,
-    dUPDATED
+    sSTATUS
   );
 end;
 /

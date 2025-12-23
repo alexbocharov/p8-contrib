@@ -1,12 +1,19 @@
 /* Триггер до добавления */
 create or replace trigger T_PRECOOUTEXJRHST_BINSERT
   before insert on PRECOOUTEXJRHST for each row
+declare
+  dCURRENT_DATE             date;
 begin
   /* считывание параметров записи master-таблицы */
   select COMPANY,CRN,JUR_PERS
     into :new.COMPANY,:new.CRN,:new.JUR_PERS
     from PRECOOUTEXJR
    where RN = :new.PRN;
+
+  /* установка значений полей даты создания и модификации */
+  dCURRENT_DATE := sysdate;
+  :new.CREATED := coalesce( :new.CREATED,dCURRENT_DATE );
+  :new.UPDATED := dCURRENT_DATE;
 
   /* регистрация события */
   if ( PKG_IUD.PROLOGUE('PRECOOUTEXJRHST', 'I') ) then

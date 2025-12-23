@@ -1,7 +1,14 @@
 /* Триггер до добавления */
 create or replace trigger T_PRECOOUTEXJR_BINSERT
   before insert on PRECOOUTEXJR for each row
+declare
+  dCURRENT_DATE             date;
 begin
+  /* установка значений полей даты создания и модификации */
+  dCURRENT_DATE := sysdate;
+  :new.CREATED := coalesce( :new.CREATED,dCURRENT_DATE );
+  :new.UPDATED := dCURRENT_DATE;
+  
   /* регистрация события */
   if ( PKG_IUD.PROLOGUE('PRECOOUTEXJR', 'I') ) then
     PKG_IUD.REG_RN('RN', :new.RN);
