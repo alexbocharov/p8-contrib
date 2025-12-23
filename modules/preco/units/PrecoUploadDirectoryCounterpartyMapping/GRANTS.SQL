@@ -1,0 +1,5 @@
+grant execute on P_PRECODIRCTRMAP_INSERT to PUBLIC;
+grant execute on P_PRECODIRCTRMAP_UPDATE to PUBLIC;
+grant execute on P_PRECODIRCTRMAP_DELETE to PUBLIC;
+grant execute on P_PRECODIRCTRMAP_FORM_EDIT to PUBLIC;
+grant select on V_PRECODIRCTRMAP to PUBLIC;
