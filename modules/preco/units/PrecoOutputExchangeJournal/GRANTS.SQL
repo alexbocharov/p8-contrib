@@ -1,0 +1,1 @@
+grant select on V_PRECOOUTEXJR to PUBLIC;
