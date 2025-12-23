@@ -4,7 +4,7 @@ create or replace procedure P_PRECOOUTEXJRHST_EXISTS
   nRN                       in number,       -- Регистрационный номер
   nCOMPANY                  in number,       -- Организация
   nCRN                      out number,      -- Каталог
-  nJUR_PERS                 out number       -- Юридическое лицо
+  nJUR_PERS                 out number       -- Ссылка на юридическое лицо
 )
 as
 begin
