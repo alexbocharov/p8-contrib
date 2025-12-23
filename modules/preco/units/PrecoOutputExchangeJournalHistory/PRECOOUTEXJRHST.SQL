@@ -36,5 +36,5 @@ UPDATED           date not null,
 /* ключи */
 constraint C_PRECOOUTEXJRHST_PK primary key (RN),
 constraint C_PRECOOUTEXJRHST_MSG_ID_UK unique (MSG_ID),
-constraint C_PRECOOUTEXJRHST_NUMB_UK unique (NUMB)
+constraint C_PRECOOUTEXJRHST_NUMB_UK unique (COMPANY, PRN, NUMB)
 );
