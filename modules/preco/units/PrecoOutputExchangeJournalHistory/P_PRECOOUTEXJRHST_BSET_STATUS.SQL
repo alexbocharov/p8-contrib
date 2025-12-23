@@ -23,9 +23,6 @@ begin
   if (SQL%NOTFOUND) then
     PKG_MSG.RECORD_NOT_FOUND( nRN,'PrecoOutputExchangeJournalHistory' );
   end if;
-
-  /* Изменения статуса журнала */
-  P_PRECOOUTEXJR_BSET_STATUS( nRN,nCOMPANY,sMSG_ID,sSTATUS,dUPDATED );
 end;
 /
 show errors procedure P_PRECOOUTEXJRHST_BSET_STATUS;
