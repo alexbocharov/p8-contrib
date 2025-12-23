@@ -7,6 +7,7 @@ begin
   PKG_UNCHANGE.CHECK_NE('PRECOOUTEXJRHST', 'COMPANY', :new.COMPANY, :old.COMPANY);
   PKG_UNCHANGE.CHECK_NE('PRECOOUTEXJRHST', 'PRN', :new.PRN, :old.PRN);
   PKG_UNCHANGE.CHECK_NE('PRECOOUTEXJRHST', 'JUR_PERS', :new.JUR_PERS, :old.JUR_PERS);
+  PKG_UNCHANGE.CHECK_NE('PRECOOUTEXJRHST', 'CREATED', :new.CREATED, :old.CREATED);
 
   /* при изменении синхронных атрибутов заголовка триггер не активировать */
   if (CMP_NUM(:old.CRN,:new.CRN) = 0 or

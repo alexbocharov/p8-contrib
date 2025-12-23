@@ -9,7 +9,6 @@ create or replace procedure P_PRECOOUTEXJRHST_BASE_UPDATE
   sSTATUS                   in varchar2,     -- Статус
   sERR_CODE                 in varchar2,     -- Код ошибки
   sERR_TEXT                 in varchar2,     -- Текст ошибки
-  dCREATED                  in date,         -- Дата создания
   dUPDATED                  in date          -- Дата модификации
 )
 as
@@ -22,7 +21,6 @@ begin
          STATUS = sSTATUS,
          ERR_CODE = sERR_CODE,
          ERR_TEXT = sERR_TEXT,
-         CREATED = dCREATED,
          UPDATED = dUPDATED
    where RN = nRN
      and COMPANY = nCOMPANY;
