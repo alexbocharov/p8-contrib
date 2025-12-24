@@ -26,7 +26,7 @@ ERR_TEXT          varchar2( 4000 ) default null
                   constraint C_PRECOINEXJRHST_ERR_TEXT_NB check( ERR_TEXT is null or rtrim(ERR_TEXT) is not null ),
 /* Дата создания */
 CREATED           date not null,
-/* Дата модфикации */
+/* Дата модификации */
 UPDATED           date not null,
 /* ключи */
 constraint C_PRECOINEXJRHST_PK primary key (RN),
