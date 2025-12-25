@@ -87,14 +87,14 @@ begin
     cDATA := blob2clob( bDATA );
 
     /* Получение кода формы отчёта */
-    FIND_CLOB_INFO( cDATA,'КОДФ=','ПРД=',sREPORT_CODE );
+    sREPORT_CODE := GET_CLOB_EXTRACT_BETWEEN( cDATA,'КОДФ=','ПРД=' );
     if sREPORT_CODE is null then
       P_MSGJOURNAL_BASE_INSERT(nIDENT, 2, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Код формы отчёта не определён.', nMSG);
       continue;
     end if;
 
     /* Дата отчёта */
-    FIND_CLOB_INFO( cDATA,'РДТ=','ВИД=',dREPORT_DATE );
+    dREPORT_DATE := TO_DATE(GET_CLOB_EXTRACT_BETWEEN( cDATA,'РДТ=','ВИД=' ), 'DD.MM.YYYY');
     if dREPORT_DATE is null then
       P_MSGJOURNAL_BASE_INSERT(nIDENT, 2, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Дата отчёта не определена.', nMSG);
       continue;
@@ -142,12 +142,14 @@ begin
         nPRECOOUTEXJR,
         nNUMB,
         sMSG_ID,
-        'PARUS8',
+        UTILIZER,
         PKG_PRECOOUTEXJR.sSTATUS_NEW,
         null,
         null,
         nPRECOOUTEXJRHST
       );
+
+      P_MSGJOURNAL_BASE_INSERT(nIDENT, 1, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Отчёт успешно отправлен. Идентификатор сообщения: ' || sMSG_ID, nMSG);
     else
       null;
     end if;

@@ -1,13 +1,14 @@
-create or replace procedure FIND_CLOB_INFO
+/* Функция поиска подстроки в CLOB */
+create or replace function GET_CLOB_EXTRACT_BETWEEN
 (
   cCLOB                     in clob,         -- CLOB для поиска
   sSTART                    in varchar2,     -- Начало поиска
-  sEND                      in varchar2,     -- Конец поиска
-  sSEARCH                   out varchar2     -- Найденная строка
-)
+  sEND                      in varchar2      -- Конец поиска
+) return varchar2
 as
   nPOS_START                PKG_STD.tNUMBER;
   nPOS_END                  PKG_STD.tNUMBER;
+  sSEARCH                   PKG_STD.tSTRING;
 begin
   sSEARCH := null;
 
@@ -18,6 +19,8 @@ begin
       sSEARCH := substr(cCLOB, nPOS_START + length(sSTART), nPOS_END - (nPOS_START + length(sSTART)));
     end if;
   end if;
+
+  return sSEARCH;
 end;
 /
-show errors procedure FIND_CLOB_INFO;
+show errors function GET_CLOB_EXTRACT_BETWEEN;

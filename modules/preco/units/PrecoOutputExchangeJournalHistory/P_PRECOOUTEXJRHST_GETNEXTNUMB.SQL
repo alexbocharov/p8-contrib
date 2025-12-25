@@ -8,16 +8,11 @@ create or replace procedure P_PRECOOUTEXJRHST_GETNEXTNUMB
 as
 begin
   /* поиск максимального */
-  begin
-    select max(NUMB)
-      into nNUMB
-      from PRECOOUTEXJRHST
-     where COMPANY = nCOMPANY
-       and PRN = nPRN;
-  exception
-    when NO_DATA_FOUND then
-      nNUMB := 0;
-  end;
+  select coalesce(max(NUMB),0)
+    into nNUMB
+    from PRECOOUTEXJRHST
+   where COMPANY = nCOMPANY
+    and PRN = nPRN;
 
   /* генерация */
   nNUMB := nNUMB + 1;
