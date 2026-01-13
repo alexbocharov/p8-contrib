@@ -3,7 +3,6 @@ create or replace procedure P_PRECOINEXJRHST_BSET_STATUS
 (
   nRN                       in number,       -- Регистрационный номер
   nCOMPANY                  in number,       -- Организация
-  sMSG_ID                   in varchar2,     -- Идентификатор сообщения
   sSTATUS                   in varchar2,     -- Статус
   sERR_CODE                 in varchar2,     -- Код ошибки
   sERR_TEXT                 in varchar2,     -- Текст ошибки
@@ -14,8 +13,7 @@ as
 begin
   /* изменение статуса в таблице */
   update PRECOINEXJRHST
-     set MSG_ID = sMSG_ID,
-         STATUS = sSTATUS,
+     set STATUS = sSTATUS,
          ERR_CODE = sERR_CODE,
          ERR_TEXT = sERR_TEXT,
          UPDATED = dUPDATED
@@ -28,7 +26,7 @@ begin
   end if;
 
   /* изменение статуса в журнале */
-  P_PRECOINEXJR_BSET_STATUS( nPRN,nCOMPANY,sMSG_ID,sSTATUS,dUPDATED );
+  P_PRECOINEXJR_BSET_STATUS( nPRN,nCOMPANY,sSTATUS,dUPDATED );
 end;
 /
 show errors procedure P_PRECOINEXJRHST_BSET_STATUS;
