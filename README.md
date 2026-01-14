@@ -1,8 +1,8 @@
-# ✨ Parus-8 Contrib
+# ✨ P8 Contrib
 
 ## 📚 **Overview**
 
-Additional modules, extensions, and utilities for the Parus‑8 ecosystem.
+Additional modules, extensions, and utilities for the P8 ecosystem.
 These additions complement the core platform without modifying its foundational architecture.
 
 ## 🎯 **Purpose**
@@ -23,7 +23,7 @@ These additions complement the core platform without modifying its foundational 
 - **/docs/**           — documentation for contributed components  
 
 ## 🧱 **Contribution Guidelines**
-- Follow Parus‑8 naming and architectural conventions  
+- Follow P8 naming and architectural conventions  
 - Keep contributions modular and self-contained  
 - Document each component clearly  
 - Submit changes via pull requests  
