@@ -1,0 +1,1 @@
+grant execute on PKG_PRECO_EXCHANGE to PUBLIC;
