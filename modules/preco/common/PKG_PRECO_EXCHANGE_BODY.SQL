@@ -10,11 +10,11 @@ as
     open pCURSOR for
       select
         T.RN            as nRN,
+        T.ID            as sID,
         A.AGNIDNUMB     as sINN,
         A.REASON_CODE   as sKPP,
         T.REPORT_CODE   as sREPORT_CODE,
         T.REPORT_DATE   as dREPORT_DATE,
-        T.MSG_ID        as sMESSAGE_ID,
         T.SENDER_CODE   as sSENDER_CODE,
         T.CONTENT       as bCONTENT
       from
