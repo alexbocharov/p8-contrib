@@ -22,7 +22,7 @@ begin
     PKG_IUD.REG_CRN('CRN', :new.CRN);
     PKG_IUD.REG('PRN', :new.PRN);
     PKG_IUD.REG(1, 'NUMB', :new.NUMB);
-    PKG_IUD.REG('MSG_ID', :new.MSG_ID);
+    PKG_IUD.REG('ID', :new.ID);
     PKG_IUD.REG('STATUS', :new.STATUS);
     PKG_IUD.REG('ERR_CODE', :new.ERR_CODE);
     PKG_IUD.REG('ERR_TEXT', :new.ERR_TEXT);

@@ -7,7 +7,7 @@ create or replace view V_PRECOOUTEXJRHST
   nPRN,                                 -- Родитель
   nJUR_PERS,                            -- Ссылка на юридическое лицо
   nNUMB,                                -- Порядковый номер
-  sMSG_ID,                              -- Идентификатор сообщения
+  sID,                                  -- Идентификатор экземпляра отчёта
   sAUTHID,                              -- Пользователь
   sSTATUS,                              -- Статус
   sERR_CODE,                            -- Код ошибки
@@ -23,7 +23,7 @@ select
   T.PRN,                                -- nPRN
   T.JUR_PERS,                           -- nJUR_PERS
   T.NUMB,                               -- nNUMB
-  T.MSG_ID,                             -- sMSG_ID
+  T.ID,                                 -- sID
   T.AUTHID,                             -- sAUTHID
   T.STATUS,                             -- sSTATUS
   T.ERR_CODE,                           -- sERR_CODE

@@ -17,9 +17,9 @@ REPORT_DATE       date not null,
 /* Наименование отчета */
 REPORT_NAME       varchar2( 160 ) not null
                   constraint C_PRECOOUTEXJR_REPORT_NAME_NB check( rtrim(REPORT_NAME) is not null ),
-/* Идентификатор сообщения */
-MSG_ID            varchar2( 36 ) not null
-                  constraint C_PRECOOUTEXJR_MSG_ID_NB check( rtrim(MSG_ID) is not null ),
+/* Идентификатор экземпляра отчёта */
+ID                varchar2( 36 ) not null
+                  constraint C_PRECOOUTEXJR_ID_NB check( rtrim(ID) is not null ),
 /* Код системы-отправителя */
 SENDER_CODE       varchar2( 36 ) not null
                   constraint C_PRECOOUTEXJR_SENDER_CODE_NB check( rtrim(SENDER_CODE) is not null ),
@@ -34,6 +34,6 @@ CREATED           date not null,
 UPDATED           date not null,
 /* ключи */
 constraint C_PRECOOUTEXJR_PK primary key (RN),
-constraint C_PRECOOUTEXJR_MSG_ID_UK unique (MSG_ID),
+constraint C_PRECOOUTEXJR_ID_UK unique (ID),
 constraint C_PRECOOUTEXJR_UK unique (JUR_PERS,REPORT_CODE,REPORT_DATE)
 );

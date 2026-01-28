@@ -11,7 +11,7 @@ create or replace view V_PRECOINEXJR
   sAGNLIST_REASON_CODE,                 -- КПП контрагента
   sREPORT_CODE,                         -- Код отчета (Форма)
   dREPORT_DATE,                         -- Дата отчета
-  sMSG_ID,                              -- Идентификатор сообщения
+  sID,                                  -- Идентификатор экземпляра отчёта
   nPRECOSENDREG,                        -- Ссылка на реестр отправителей
   sPRECOSENDREG_CODE,                   -- Код системы-отправителя
   sSTATUS,                              -- Статус
@@ -30,7 +30,7 @@ select
   AGN.REASON_CODE,                      -- sAGNLIST_REASON_CODE
   T.REPORT_CODE,                        -- sREPORT_CODE
   T.REPORT_DATE,                        -- dREPORT_DATE
-  T.MSG_ID,                             -- sMSG_ID
+  T.ID,                                 -- sID
   T.PRECOSENDREG,                       -- nPRECOSENDREG
   P.CODE,                               -- sPRECOSENDREG_CODE
   T.STATUS,                             -- sSTATUS

@@ -4,7 +4,7 @@ create or replace procedure P_PRECOOUTEXJRHST_BASE_UPDATE
   nRN                       in number,       -- Регистрационный номер
   nCOMPANY                  in number,       -- Организация
   nNUMB                     in number,       -- Порядковый номер
-  sMSG_ID                   in varchar2,     -- Идентификатор сообщения
+  sID                       in varchar2,     -- Идентификатор экземпляра отчёта
   sAUTHID                   in varchar2,     -- Пользователь
   sSTATUS                   in varchar2,     -- Статус
   sERR_CODE                 in varchar2,     -- Код ошибки
@@ -16,7 +16,7 @@ begin
   /* исправление записи в таблице */
   update PRECOOUTEXJRHST
      set NUMB = nNUMB,
-         MSG_ID = sMSG_ID,
+         ID = sID,
          AUTHID = sAUTHID,
          STATUS = sSTATUS,
          ERR_CODE = sERR_CODE,

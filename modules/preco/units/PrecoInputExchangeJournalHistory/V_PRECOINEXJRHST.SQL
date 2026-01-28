@@ -6,7 +6,7 @@ create or replace view V_PRECOINEXJRHST
   nCRN,                                 -- Каталог
   nPRN,                                 -- Родитель
   nNUMB,                                -- Порядковый номер
-  sMSG_ID,                              -- Идентификатор сообщения
+  sID,                                  -- Идентификатор экземпляра отчёта
   sSTATUS,                              -- Статус
   sERR_CODE,                            -- Код ошибки
   sERR_TEXT,                            -- Текст ошибки
@@ -20,7 +20,7 @@ select
   T.CRN,                                -- nCRN
   T.PRN,                                -- nPRN
   T.NUMB,                               -- nNUMB
-  T.MSG_ID,                             -- sMSG_ID
+  T.ID,                                 -- sID
   T.STATUS,                             -- sSTATUS
   T.ERR_CODE,                           -- sERR_CODE
   T.ERR_TEXT,                           -- sERR_TEXT

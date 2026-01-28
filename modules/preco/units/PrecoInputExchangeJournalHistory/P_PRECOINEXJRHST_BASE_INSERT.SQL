@@ -4,7 +4,7 @@ create or replace procedure P_PRECOINEXJRHST_BASE_INSERT
   nCOMPANY                  in number,       -- Организация
   nPRN                      in number,       -- Родитель
   nNUMB                     in number,       -- Порядковый номер
-  sMSG_ID                   in varchar2,     -- Идентификатор сообщения
+  sID                       in varchar2,     -- Идентификатор экземпляра отчёта
   sSTATUS                   in varchar2,     -- Статус
   sERR_CODE                 in varchar2,     -- Код ошибки
   sERR_TEXT                 in varchar2,     -- Текст ошибки
@@ -21,7 +21,7 @@ begin
     RN,
     PRN,
     NUMB,
-    MSG_ID,
+    ID,
     STATUS,
     ERR_CODE,
     ERR_TEXT
@@ -31,7 +31,7 @@ begin
     nRN,
     nPRN,
     nNUMB,
-    sMSG_ID,
+    sID,
     sSTATUS,
     sERR_CODE,
     sERR_TEXT

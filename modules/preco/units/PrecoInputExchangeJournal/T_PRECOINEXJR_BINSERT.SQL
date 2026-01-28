@@ -8,7 +8,7 @@ begin
   dCURRENT_DATE := sysdate;
   :new.CREATED := coalesce( :new.CREATED,dCURRENT_DATE );
   :new.UPDATED := dCURRENT_DATE;
-  
+
   /* регистрация события */
   if ( PKG_IUD.PROLOGUE('PRECOINEXJR', 'I') ) then
     PKG_IUD.REG_RN('RN', :new.RN);
@@ -17,7 +17,7 @@ begin
     PKG_IUD.REG(1, 'AGENT', :new.AGENT);
     PKG_IUD.REG(2, 'REPORT_CODE', :new.REPORT_CODE);
     PKG_IUD.REG(3, 'REPORT_DATE', :new.REPORT_DATE);
-    PKG_IUD.REG('MSG_ID', :new.MSG_ID);
+    PKG_IUD.REG('ID', :new.ID);
     PKG_IUD.REG('PRECOSENDREG', :new.PRECOSENDREG);
     PKG_IUD.REG('CONTENT', :new.CONTENT);
     PKG_IUD.REG('STATUS', :new.STATUS);

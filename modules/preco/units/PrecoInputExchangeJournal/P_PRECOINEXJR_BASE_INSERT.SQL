@@ -6,7 +6,7 @@ create or replace procedure P_PRECOINEXJR_BASE_INSERT
   nAGENT                    in number,       -- Ссылка на контрагента
   sREPORT_CODE              in varchar2,     -- Код отчета (Форма)
   dREPORT_DATE              in date,         -- Дата отчета
-  sMSG_ID                   in varchar2,     -- Идентификатор сообщения
+  sID                       in varchar2,     -- Идентификатор экземпляра отчёта
   nPRECOSENDREG             in number,       -- Ссылка на реестр отправителей
   sSTATUS                   in varchar2,     -- Статус
   nRN                       out number       -- Регистрационный номер
@@ -25,7 +25,7 @@ begin
     AGENT,
     REPORT_CODE,
     REPORT_DATE,
-    MSG_ID,
+    ID,
     PRECOSENDREG,
     STATUS
   )
@@ -37,7 +37,7 @@ begin
     nAGENT,
     sREPORT_CODE,
     dREPORT_DATE,
-    sMSG_ID,
+    sID,
     nPRECOSENDREG,
     sSTATUS
   );

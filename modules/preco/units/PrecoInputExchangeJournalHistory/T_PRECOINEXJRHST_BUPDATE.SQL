@@ -19,7 +19,7 @@ begin
     PKG_IUD.REG_CRN('CRN', :new.CRN, :old.CRN);
     PKG_IUD.REG('PRN', :new.PRN, :old.PRN);
     PKG_IUD.REG(1, 'NUMB', :new.NUMB, :old.NUMB);
-    PKG_IUD.REG('MSG_ID', :new.MSG_ID, :old.MSG_ID);
+    PKG_IUD.REG('ID', :new.ID, :old.ID);
     PKG_IUD.REG('STATUS', :new.STATUS, :old.STATUS);
     PKG_IUD.REG('ERR_CODE', :new.ERR_CODE, :old.ERR_CODE);
     PKG_IUD.REG('ERR_TEXT', :new.ERR_TEXT, :old.ERR_TEXT);

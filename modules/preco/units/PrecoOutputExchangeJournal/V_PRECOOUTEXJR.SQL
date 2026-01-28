@@ -12,7 +12,7 @@ create or replace view V_PRECOOUTEXJR
   sREPORT_CODE,                         -- Код отчета (Форма)
   dREPORT_DATE,                         -- Дата отчета
   sREPORT_NAME,                         -- Наименование отчета
-  sMSG_ID,                              -- Идентификатор сообщения
+  sID,                                  -- Идентификатор экземпляра отчёта
   sSENDER_CODE,                         -- Код системы-отправителя
   sSTATUS,                              -- Статус
   dCREATED,                             -- Дата создания
@@ -31,7 +31,7 @@ select
   T.REPORT_CODE,                        -- sREPORT_CODE
   T.REPORT_DATE,                        -- dREPORT_DATE
   T.REPORT_NAME,                        -- sREPORT_NAME
-  T.MSG_ID,                             -- sMSG_ID
+  T.ID,                                 -- sID
   T.SENDER_CODE,                        -- sSENDER_CODE
   T.STATUS,                             -- sSTATUS
   T.CREATED,                            -- dCREATED

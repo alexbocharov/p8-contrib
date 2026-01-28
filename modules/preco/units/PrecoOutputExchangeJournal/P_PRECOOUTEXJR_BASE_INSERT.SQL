@@ -7,7 +7,7 @@ create or replace procedure P_PRECOOUTEXJR_BASE_INSERT
   sREPORT_CODE              in varchar2,     -- Код отчета (Форма)
   dREPORT_DATE              in date,         -- Дата отчета
   sREPORT_NAME              in varchar2,     -- Наименование отчета
-  sMSG_ID                   in varchar2,     -- Идентификатор сообщения
+  sID                       in varchar2,     -- Идентификатор экземпляра отчёта
   sSENDER_CODE              in varchar2,     -- Код системы-отправителя
   bCONTENT                  in blob,         -- Содержимое
   sSTATUS                   in varchar2,     -- Статус
@@ -28,7 +28,7 @@ begin
     REPORT_CODE,
     REPORT_DATE,
     REPORT_NAME,
-    MSG_ID,
+    ID,
     SENDER_CODE,
     CONTENT,
     STATUS
@@ -42,7 +42,7 @@ begin
     sREPORT_CODE,
     dREPORT_DATE,
     sREPORT_NAME,
-    sMSG_ID,
+    sID,
     sSENDER_CODE,
     bCONTENT,
     sSTATUS

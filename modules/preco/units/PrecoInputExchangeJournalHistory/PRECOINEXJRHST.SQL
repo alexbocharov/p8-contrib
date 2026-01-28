@@ -12,9 +12,9 @@ PRN               number( 17 ) not null,
 /* Порядковый номер */
 NUMB              number( 17 ) not null
                   constraint C_PRECOINEXJRHST_NUMB_NB check( rtrim(NUMB) is not null ),
-/* Идентификатор сообщения */
-MSG_ID            varchar2( 36 ) not null
-                  constraint C_PRECOINEXJRHST_MSG_ID_NB check( rtrim(MSG_ID) is not null ),
+/* Идентификатор экземпляра отчёта */
+ID                varchar2( 36 ) not null
+                  constraint C_PRECOINEXJRHST_ID_NB check( rtrim(ID) is not null ),
 /* Статус */
 STATUS            varchar2( 20 ) not null
                   constraint C_PRECOINEXJRHST_STATUS_NB check( rtrim(STATUS) is not null ),
@@ -30,6 +30,6 @@ CREATED           date not null,
 UPDATED           date not null,
 /* ключи */
 constraint C_PRECOINEXJRHST_PK primary key (RN),
-constraint C_PRECOINEXJRHST_MSG_ID_UK unique (MSG_ID),
+constraint C_PRECOINEXJRHST_ID_UK unique (ID),
 constraint C_PRECOINEXJRHST_NUMB_UK unique (NUMB)
 );

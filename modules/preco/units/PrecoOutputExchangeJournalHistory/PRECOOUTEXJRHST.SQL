@@ -1,4 +1,4 @@
-/* ПРЕКО. Платформа сбора первичной отчётности. Журнал исходящего обмена отчётностью (история) */
+/* ПРЕКО. Платформа сбора первичной отчётности. Журнал входящего обмена отчётностью (история)•1 */
 create table PRECOOUTEXJRHST
 (
 /* Регистрационный номер */
@@ -14,9 +14,9 @@ JUR_PERS          number( 17 ) not null,
 /* Порядковый номер */
 NUMB              number( 17 ) not null
                   constraint C_PRECOOUTEXJRHST_NUMB_NB check( rtrim(NUMB) is not null ),
-/* Идентификатор сообщения */
-MSG_ID            varchar2( 36 ) not null
-                  constraint C_PRECOOUTEXJRHST_MSG_ID_NB check( rtrim(MSG_ID) is not null ),
+/* Идентификатор экземпляра отчёта */
+ID                varchar2( 36 ) not null
+                  constraint C_PRECOOUTEXJRHST_ID_NB check( rtrim(ID) is not null ),
 /* Пользователь */
 AUTHID            varchar2( 30 ) not null
                   constraint C_PRECOOUTEXJRHST_AUTHID_NB check( rtrim(AUTHID) is not null ),
@@ -35,6 +35,6 @@ CREATED           date not null,
 UPDATED           date not null,
 /* ключи */
 constraint C_PRECOOUTEXJRHST_PK primary key (RN),
-constraint C_PRECOOUTEXJRHST_MSG_ID_UK unique (MSG_ID),
-constraint C_PRECOOUTEXJRHST_NUMB_UK unique (COMPANY, PRN, NUMB)
+constraint C_PRECOOUTEXJRHST_ID_UK unique (ID),
+constraint C_PRECOOUTEXJRHST_NUMB_UK unique (COMPANY,PRN,NUMB)
 );

@@ -14,9 +14,9 @@ REPORT_CODE       varchar2( 20 ) not null
                   constraint C_PRECOINEXJR_REPORT_CODE_NB check( rtrim(REPORT_CODE) is not null ),
 /* Дата отчета */
 REPORT_DATE       date not null,
-/* Идентификатор сообщения */
-MSG_ID            varchar2( 36 ) not null
-                  constraint C_PRECOINEXJR_MSG_ID_NB check( rtrim(MSG_ID) is not null ),
+/* Идентификатор экземпляра отчёта */
+ID                varchar2( 36 ) not null
+                  constraint C_PRECOINEXJR_ID_NB check( rtrim(ID) is not null ),
 /* Ссылка на реестр отправителей */
 PRECOSENDREG      number( 17 ) not null,
 /* Содержимое */
@@ -30,6 +30,6 @@ CREATED           date not null,
 UPDATED           date not null,
 /* ключи */
 constraint C_PRECOINEXJR_PK primary key (RN),
-constraint C_PRECOINEXJR_MSG_ID_UK unique (MSG_ID),
+constraint C_PRECOINEXJR_ID_UK unique (ID),
 constraint C_PRECOINEXJR_UK unique (AGENT,REPORT_CODE,REPORT_DATE)
 );
