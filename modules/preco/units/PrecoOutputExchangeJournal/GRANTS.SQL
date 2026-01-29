@@ -1,1 +1,2 @@
+grant execute on PKG_PRECOOUTEXJR_EXCHANGE to PUBLIC;
 grant select on V_PRECOOUTEXJR to PUBLIC;

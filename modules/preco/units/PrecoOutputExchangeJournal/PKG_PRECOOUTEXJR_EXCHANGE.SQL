@@ -1,4 +1,4 @@
-create or replace package PKG_PRECO_EXCHANGE
+create or replace package PKG_PRECOOUTEXJR_EXCHANGE
 as
   sSTATUS_NEW               constant PKG_STD.tSTRING := 'NEW';                -- Новая
   sSTATUS_QUEUED            constant PKG_STD.tSTRING := 'QUEUED';             -- В очереди на отправку
@@ -36,6 +36,6 @@ as
     sERR_TEXT               in varchar2      -- Текст ошибки
   );
 
-end PKG_PRECO_EXCHANGE;
+end PKG_PRECOOUTEXJR_EXCHANGE;
 /
-show errors package PKG_PRECO_EXCHANGE;
+show errors package PKG_PRECOOUTEXJR_EXCHANGE;

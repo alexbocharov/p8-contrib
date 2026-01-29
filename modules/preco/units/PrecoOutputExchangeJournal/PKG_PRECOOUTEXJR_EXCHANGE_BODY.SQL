@@ -1,4 +1,4 @@
-create or replace package body PKG_PRECO_EXCHANGE
+create or replace package body PKG_PRECOOUTEXJR_EXCHANGE
 as
   procedure GET_RECORD_BY_RN
   (
@@ -101,6 +101,6 @@ as
     end;
 end;
 
-end PKG_PRECO_EXCHANGE;
+end PKG_PRECOOUTEXJR_EXCHANGE;
 /
-show errors package body PKG_PRECO_EXCHANGE;
+show errors package body PKG_PRECOOUTEXJR_EXCHANGE;

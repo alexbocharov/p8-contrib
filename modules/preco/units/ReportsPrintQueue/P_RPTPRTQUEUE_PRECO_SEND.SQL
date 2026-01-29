@@ -134,7 +134,7 @@ begin
         sID,
         sSENDER_CODE_OPTIONS,
         bCONTENT,
-        PKG_PRECO_EXCHANGE.sSTATUS_NEW,
+        PKG_PRECOOUTEXJR_EXCHANGE.sSTATUS_NEW,
         nPRECOOUTEXJR
       );
 
@@ -154,7 +154,7 @@ begin
         nNUMB,
         sID,
         UTILIZER,
-        PKG_PRECO_EXCHANGE.sSTATUS_NEW,
+        PKG_PRECOOUTEXJR_EXCHANGE.sSTATUS_NEW,
         null,
         null,
         nPRECOOUTEXJRHST
@@ -170,7 +170,7 @@ begin
          set SENDER_CODE   = sSENDER_CODE_OPTIONS,
              CONTENT       = bCONTENT,
              ID            = sID,
-             STATUS        = PKG_PRECO_EXCHANGE.sSTATUS_UPDATED,
+             STATUS        = PKG_PRECOOUTEXJR_EXCHANGE.sSTATUS_UPDATED,
              UPDATED       = dCURRENT_DATE
        where RN = nPRECOOUTEXJR;
 
@@ -190,7 +190,7 @@ begin
         nNUMB,
         sID,
         UTILIZER,
-        PKG_PRECO_EXCHANGE.sSTATUS_UPDATED,
+        PKG_PRECOOUTEXJR_EXCHANGE.sSTATUS_UPDATED,
         null,
         null,
         nPRECOOUTEXJRHST
