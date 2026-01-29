@@ -17,7 +17,7 @@ as
   sAGENT_KPP                PKG_STD.tSTRING;
   sREPORT_CODE              PKG_STD.tSTRING;
   dREPORT_DATE              date;
-  sMSG_ID                   PKG_STD.tSTRING;
+  sID                       PKG_STD.tSTRING;
   nCRN                      PKG_STD.tREF;
   nPRECOOUTEXJR             PKG_STD.tREF;
   nPRECOOUTEXJRHST          PKG_STD.tREF;
@@ -112,7 +112,7 @@ begin
     end;
 
     /* Идентификатор сообщения */
-    sMSG_ID := lower(PKG_GUID.SEPARATED());
+    sID := lower(PKG_GUID.SEPARATED());
 
     /* Запись в журнал исходящего обмена отчётностью ПРЕКО */
     FIND_PRECOOUTEXJR_BY_REPORT( 1,nCOMPANY,nJUR_PERS,dREPORT_DATE,sREPORT_CODE,nPRECOOUTEXJR );
@@ -131,7 +131,7 @@ begin
         sREPORT_CODE,
         dREPORT_DATE,
         rREC.REPORT_NAME,
-        sMSG_ID,
+        sID,
         sSENDER_CODE_OPTIONS,
         bCONTENT,
         PKG_PRECO_EXCHANGE.sSTATUS_NEW,
@@ -152,7 +152,7 @@ begin
         nCOMPANY,
         nPRECOOUTEXJR,
         nNUMB,
-        sMSG_ID,
+        sID,
         UTILIZER,
         PKG_PRECO_EXCHANGE.sSTATUS_NEW,
         null,
@@ -160,7 +160,7 @@ begin
         nPRECOOUTEXJRHST
       );
 
-      P_MSGJOURNAL_BASE_INSERT(nIDENT, 0, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Отчёт успешно отправлен. Идентификатор сообщения: ' || sMSG_ID, nMSG);
+      P_MSGJOURNAL_BASE_INSERT(nIDENT, 0, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Отчёт успешно отправлен. Идентификатор экземпляра отчета: ' || sID, nMSG);
     else
       /* Текущая дата */
       dCURRENT_DATE := sysdate;
@@ -169,7 +169,7 @@ begin
       update PRECOOUTEXJR
          set SENDER_CODE   = sSENDER_CODE_OPTIONS,
              CONTENT       = bCONTENT,
-             MSG_ID        = sMSG_ID,
+             ID            = sID,
              STATUS        = PKG_PRECO_EXCHANGE.sSTATUS_UPDATED,
              UPDATED       = dCURRENT_DATE
        where RN = nPRECOOUTEXJR;
@@ -188,7 +188,7 @@ begin
         nCOMPANY,
         nPRECOOUTEXJR,
         nNUMB,
-        sMSG_ID,
+        sID,
         UTILIZER,
         PKG_PRECO_EXCHANGE.sSTATUS_UPDATED,
         null,
@@ -196,7 +196,7 @@ begin
         nPRECOOUTEXJRHST
       );
 
-      P_MSGJOURNAL_BASE_INSERT(nIDENT, 0, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Отчёт успешно обновлён. Идентификатор сообщения: ' || sMSG_ID, nMSG);
+      P_MSGJOURNAL_BASE_INSERT(nIDENT, 0, 'Отправка отчёта "' || rREC.REPORT_NAME || '" в ПРЕКО. Платформа сбора первичной отчётности: Отчёт успешно обновлён. Идентификатор экземпляра отчета: ' || sID, nMSG);
     end if;
   end loop;
 

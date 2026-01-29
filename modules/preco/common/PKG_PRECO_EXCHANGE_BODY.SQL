@@ -59,7 +59,7 @@ as
   as
   begin
     open pCURSOR for
-      select MSG_ID as sMESSAGE_ID
+      select ID as sID
         from PARUS.PRECOOUTEXJR
        where ROWID IN (
              select RID
