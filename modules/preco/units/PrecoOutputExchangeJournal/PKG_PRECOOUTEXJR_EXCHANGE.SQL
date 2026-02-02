@@ -10,9 +10,9 @@ as
   sSTATUS_ERROR             constant PKG_STD.tSTRING := 'ERROR';              -- Ошибка
   sSTATUS_UPDATED           constant PKG_STD.tSTRING := 'UPDATED';            -- Обновлена
 
-  procedure GET_RECORD_BY_RN
+  procedure GET_RECORD_BY_ID
   (
-    nRN                     in     number,        -- Регистрационный номер
+    sID                     in     varchar2,      -- Идентификатор экземпляра отчета
     pCURSOR                 out    SYS_REFCURSOR  -- Курсор с записью
   );
 
@@ -30,7 +30,7 @@ as
 
   procedure SET_STATUS
   (
-    nRN                     in number,       -- Регистрационный номер
+    sID                     in varchar2,     -- Идентификатор экземпляра отчета
     sSTATUS                 in varchar2,     -- Статус
     sERR_CODE               in varchar2,     -- Код ошибки
     sERR_TEXT               in varchar2      -- Текст ошибки

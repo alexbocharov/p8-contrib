@@ -1,15 +1,14 @@
 create or replace package body PKG_PRECOOUTEXJR_EXCHANGE
 as
-  procedure GET_RECORD_BY_RN
+  procedure GET_RECORD_BY_ID
   (
-    nRN                     in     number,        -- Регистрационный номер
+    sID                     in     varchar2,      -- Идентификатор экземпляра отчета
     pCURSOR                 out    SYS_REFCURSOR  -- Курсор с записью
   )
   as
   begin
     open pCURSOR for
       select
-        T.RN            as nRN,
         T.ID            as sID,
         A.AGNIDNUMB     as sINN,
         A.REASON_CODE   as sKPP,
@@ -21,10 +20,10 @@ as
         PRECOOUTEXJR T
           inner join JURPERSONS J on J.RN = T.JUR_PERS
           inner join AGNLIST    A on A.RN = J.AGENT
-      where T.RN = nRN;
-    
+      where T.ID = sID;
+
     if SQL%NOTFOUND then
-      P_EXCEPTION( 0,'Не найдена запись журнала обмена с регистрационным номером '||nRN );
+      P_EXCEPTION( 0,'Не найдена запись журнала обмена с идентификатором '||sID );
     end if;
   end;
 
@@ -36,7 +35,7 @@ as
   as
   begin
     open pCURSOR for
-      select RN as nRN
+      select ID as sID
         from PARUS.PRECOOUTEXJR
        where ROWID IN (
              select RID
@@ -76,7 +75,7 @@ as
 
   procedure SET_STATUS
   (
-    nRN                     in number,       -- Регистрационный номер
+    sID                     in varchar2,     -- Идентификатор экземпляра отчета
     sSTATUS                 in varchar2,     -- Статус
     sERR_CODE               in varchar2,     -- Код ошибки
     sERR_TEXT               in varchar2      -- Текст ошибки
@@ -90,14 +89,14 @@ as
       select RN, COMPANY
         into nHST_RN, nCOMPANY
         from PRECOOUTEXJRHST
-      where PRN = nRN
-        and NUMB = (select max(NUMB) from PRECOOUTEXJRHST where PRN = nRN);
+      where ID = sID
+        and NUMB = (select max(NUMB) from PRECOOUTEXJRHST where ID = sID);
 
       /* изменение статуса */
       P_PRECOOUTEXJRHST_BSET_STATUS( nHST_RN,nCOMPANY,sSTATUS,sERR_CODE,sERR_TEXT,SYSDATE );
     exception
       when NO_DATA_FOUND then
-        P_EXCEPTION( 0,'Не найдена запись истории журнала обмена с регистрационным номером '||nRN );
+        P_EXCEPTION( 0,'Не найдена запись истории журнала обмена с идентификатором '||sID );
     end;
 end;
 
