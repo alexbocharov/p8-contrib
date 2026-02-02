@@ -25,6 +25,8 @@ begin
 
   sSEARCH := substr(cCLOB, nPOS_START + length(sSTART), nPOS_END - (nPOS_START + length(sSTART)));
 
+  sSEARCH := regexp_replace(sSEARCH, '[[:cntrl:]]', '');
+
   return sSEARCH;
 end;
 /
