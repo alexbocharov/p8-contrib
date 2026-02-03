@@ -10,30 +10,42 @@ as
   sSTATUS_ERROR             constant PKG_STD.tSTRING := 'ERROR';              -- Ошибка
   sSTATUS_UPDATED           constant PKG_STD.tSTRING := 'UPDATED';            -- Обновлена
 
+  procedure GET_BATCH_FOR_SENDING
+  (
+    nBATCH_SIZE             in number,            -- Размер пакета
+    pCURSOR                 out sys_refcursor     -- Курсор с метаданными передаваемых отчётов
+  );
+
+  procedure GET_CONTENT_BY_ID
+  (
+    sID                     in varchar2,          -- Идентификатор экземпляра отчета
+    pCLOB                   out clob              -- CLOB с содержимым отчёта
+  );
+
   procedure GET_RECORD_BY_ID
   (
-    sID                     in     varchar2,      -- Идентификатор экземпляра отчета
-    pCURSOR                 out    SYS_REFCURSOR  -- Курсор с записью
+    sID                     in varchar2,          -- Идентификатор экземпляра отчета
+    pCURSOR                 out sys_refcursor     -- Курсор с записью
   );
 
   procedure GET_PENDING_FOR_QUEUE
   (
-    nLIMIT                  in     number,        -- Лимит записей
-    pCURSOR                 out    SYS_REFCURSOR  -- Курсор с регистрационными номерами
+    nLIMIT                  in number,            -- Лимит записей
+    pCURSOR                 out sys_refcursor     -- Курсор с регистрационными номерами
   );
 
   procedure GET_PENDING_FOR_STATUS_CHK
   (
-    nLIMIT                  in     number,        -- Лимит записей
-    pCURSOR                 out    SYS_REFCURSOR  -- Курсор с идентификаторами сообщений
+    nLIMIT                  in number,            -- Лимит записей
+    pCURSOR                 out sys_refcursor     -- Курсор с идентификаторами сообщений
   );
 
   procedure SET_STATUS
   (
-    sID                     in varchar2,     -- Идентификатор экземпляра отчета
-    sSTATUS                 in varchar2,     -- Статус
-    sERR_CODE               in varchar2,     -- Код ошибки
-    sERR_TEXT               in varchar2      -- Текст ошибки
+    sID                     in varchar2,          -- Идентификатор экземпляра отчета
+    sSTATUS                 in varchar2,          -- Статус
+    sERR_CODE               in varchar2,          -- Код ошибки
+    sERR_TEXT               in varchar2           -- Текст ошибки
   );
 
 end PKG_PRECOOUTEXJR_EXCHANGE;
