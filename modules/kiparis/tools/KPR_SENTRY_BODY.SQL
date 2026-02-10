@@ -1,6 +1,6 @@
 create or replace package body KPR_SENTRY
 as
-  cSALT                     constant varchar2(32) := 'KPR_SENTRY_SALT_2024'; -- Соль для защиты данных
+  cSALT                     constant varchar2(32) := 'f7&9Wp_q[2Z#Lm8*Tr90-Vx!u@5kYcR1'; -- Соль для защиты данных
 
   /* Получить секретный ключ (SHA-256 = 32 байта) */
   function GET_SECRET_KEY
