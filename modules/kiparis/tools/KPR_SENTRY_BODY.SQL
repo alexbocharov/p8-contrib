@@ -1,9 +1,9 @@
 create or replace package body KPR_SENTRY
 as
-  cSALT                     constant varchar2(32) := 'f7&9Wp_q[2Z#Lm8*Tr90-Vx!u@5kYcR1'; -- Соль для защиты данных
+  cSALT                     constant varchar2(32) := 'f7_9Wp_q[2Z#Lm8*Tr90-Vx!u@5kYcR1'; -- Соль для защиты данных
 
   /* Получить секретный ключ (SHA-256 = 32 байта) */
-  function GET_SECRET_KEY
+  function DERIVE
   (
     nRN                     in number     -- Регистрационный номер
   ) 
@@ -35,7 +35,7 @@ as
              DBMS_CRYPTO.ENCRYPT(
                src => UTL_I18N.STRING_TO_RAW(sDATA, 'AL32UTF8'),
                typ => DBMS_CRYPTO.ENCRYPT_AES256 + DBMS_CRYPTO.CHAIN_CBC + DBMS_CRYPTO.PAD_PKCS5,
-               key => GET_SECRET_KEY(nRN),
+               key => DERIVE(nRN),
                iv  => rIV
              )
            );
@@ -64,7 +64,7 @@ as
       DBMS_CRYPTO.DECRYPT(
         src => rDATA,
         typ => DBMS_CRYPTO.ENCRYPT_AES256 + DBMS_CRYPTO.CHAIN_CBC + DBMS_CRYPTO.PAD_PKCS5,
-        key => GET_SECRET_KEY(nRN),
+        key => DERIVE(nRN),
         iv  => rIV
       ), 
       'AL32UTF8'

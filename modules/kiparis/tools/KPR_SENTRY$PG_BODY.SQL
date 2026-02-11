@@ -1,14 +1,14 @@
 create or replace package body KPR_SENTRY$PG
 as
   /* Получить секретный ключ (SHA-256 = 32 байта) */
-  function GET_SECRET_KEY
+  function DERIVE
   (
     nRN                     in number     -- Регистрационный номер
   ) 
   return raw 
   is
   begin
-    P_NECESSARY_RECREATE_VOLATILE( 'KPR_SENTRY.GET_SECRET_KEY' );
+    P_NECESSARY_RECREATE_VOLATILE( 'KPR_SENTRY.DERIVE' );
   end;
 
   /* Защитить данные от несанкционированного доступа */
