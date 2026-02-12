@@ -1,4 +1,4 @@
-create or replace package body KPR_SENTRY
+create or replace package body KIP_SENTRY
 as
   cSALT                     constant varchar2(32) := 'f7_9Wp_q[2Z#Lm8*Tr90-Vx!u@5kYcR1'; -- Соль для защиты данных
 
@@ -74,6 +74,6 @@ as
       -- В случае ошибки (например, неправильный формат данных) возвращаем null
       return null;
   end;
-end KPR_SENTRY;
+end KIP_SENTRY;
 /
-show errors package body KPR_SENTRY;
+show errors package body KIP_SENTRY;

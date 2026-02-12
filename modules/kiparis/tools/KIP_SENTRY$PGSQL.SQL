@@ -1,5 +1,5 @@
 /* Получить секретный ключ (SHA-256 = 32 байта) */
-create or replace function KPR_SENTRY$DERIVE
+create or replace function KIP_SENTRY$DERIVE
 (
   nRN                       numeric   -- Регистрационный номер
 )
@@ -16,7 +16,7 @@ end;
 $$ language PLPGSQL immutable;
 
 /* Защитить данные от несанкционированного доступа */
-create or replace function KPR_SENTRY$GUARD
+create or replace function KIP_SENTRY$GUARD
 (
   nRN                       numeric,   -- Регистрационный номер
   sDATA                     text       -- Данные для защиты
@@ -33,7 +33,7 @@ begin
 
   return rIV || encrypt_iv(
         convert_to(sDATA, 'UTF8'),      -- Данные в UTF8
-        KPR_SENTRY$DERIVE(nRN),         -- Ключ (32 байта)
+        KIP_SENTRY$DERIVE(nRN),         -- Ключ (32 байта)
         rIV,                            -- Вектор
         'aes-cbc/pad:pkcs'              -- Режим шифрования
       );
@@ -41,7 +41,7 @@ end;
 $$ language PLPGSQL;
 
 /* Раскрыть данные для авторизованного доступа */
-create or replace function KPR_SENTRY$REVEAL
+create or replace function KIP_SENTRY$REVEAL
 (
   nRN                       numeric,   -- Регистрационный номер
   rSECURED_DATA             bytea      -- Защищённые данные
@@ -65,7 +65,7 @@ begin
     return convert_from(
       decrypt_iv(
         rDATA,
-        KPR_SENTRY$DERIVE(nRN), -- Ключ (32 байта)
+        KIP_SENTRY$DERIVE(nRN), -- Ключ (32 байта)
         rIV,                    -- Вектор
         'aes-cbc/pad:pkcs'      -- Режим шифрования
       ), 

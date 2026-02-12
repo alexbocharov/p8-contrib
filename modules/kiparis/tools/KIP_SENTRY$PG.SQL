@@ -1,4 +1,4 @@
-create or replace package KPR_SENTRY$PG
+create or replace package KIP_SENTRY$PG
 as
   /* Защитить данные от несанкционированного доступа */
   function GUARD
@@ -15,6 +15,6 @@ as
     rSECURED_DATA           in raw        -- Защищённые данные
   )
   return varchar2;
-end KPR_SENTRY$PG;
+end KIP_SENTRY$PG;
 /
-show errors package KPR_SENTRY$PG;
+show errors package KIP_SENTRY$PG;
