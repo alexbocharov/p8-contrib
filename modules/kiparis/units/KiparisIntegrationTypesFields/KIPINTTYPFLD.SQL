@@ -25,5 +25,5 @@ BUNDLE            varchar2( 30 ) default null
 /* ключи */
 constraint C_KIPINTTYPFLD_PK primary key (RN),
 constraint C_KIPINTTYPFLD_UK unique (PRN,FLD_CODE),
-constraint C_KIPINTTYPFLD_ENTRY_TYPE_VAL check (ENTRY_TYPE in (0, 1, 2) and ((ENTRY_TYPE = 1 and DATA_TYPE = 0) or (ENTRY_TYPE <> 1) ))
+constraint C_KIPINTTYPFLD_ENTRY_TYPE_VAL check (ENTRY_TYPE in (0, 1, 2, 3) and (ENTRY_TYPE = 1 and DATA_TYPE = 0) or (ENTRY_TYPE = 2 and DATA_TYPE = 1) or (ENTRY_TYPE = 3 and DATA_TYPE = 0) or (ENTRY_TYPE = 0))
 );
