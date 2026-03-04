@@ -36,4 +36,5 @@ from
   KIPINTCFGVAL T
   inner join KIPINTTYPFLD K on T.KIPINTTYPFLD = K.RN
 where exists (select null from V_USERPRIV UP where UP.CATALOG = T.CRN)
-  and exists (select null from V_USERPRIV UP where UP.JUR_PERS = T.JUR_PERS and UP.UNITCODE = 'KiparisIntegrationConfigs');
+  and exists (select null from V_USERPRIV UP where UP.JUR_PERS = T.JUR_PERS and UP.UNITCODE = 'KiparisIntegrationConfigs')
+order by K.SORT_ORDER;

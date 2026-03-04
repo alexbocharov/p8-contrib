@@ -11,6 +11,8 @@ FLD_CODE          varchar2( 30 ) not null
 /* Наименование параметра */
 FLD_NAME          varchar2( 2000 ) not null
                   constraint C_KIPINTTYPFLD_FLD_NAME_NB check( rtrim(FLD_NAME) is not null ),
+/* Порядок сортировки */
+SORT_ORDER        number( 17 ) default 0 not null,
 /* Способ формирования */
 ENTRY_TYPE        number( 1 ) not null,
 /* Тип данных */

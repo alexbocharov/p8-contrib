@@ -5,6 +5,7 @@ create or replace view V_KIPINTTYPFLD
   nPRN,                                 -- Родитель
   sFLD_CODE,                            -- Код параметра
   sFLD_NAME,                            -- Наименование параметра
+  nSORT_ORDER,                          -- Порядок сортировки
   nENTRY_TYPE,                          -- Способ формирования
   nDATA_TYPE,                           -- Тип данных
   nSTPOLICY,                            -- Политика хранения
@@ -16,6 +17,7 @@ select
   T.PRN,                                -- nPRN
   T.FLD_CODE,                           -- sFLD_CODE
   T.FLD_NAME,                           -- sFLD_NAME
+  T.SORT_ORDER,                         -- nSORT_ORDER
   T.ENTRY_TYPE,                         -- nENTRY_TYPE
   T.DATA_TYPE,                          -- nDATA_TYPE
   T.STPOLICY,                           -- nSTPOLICY
