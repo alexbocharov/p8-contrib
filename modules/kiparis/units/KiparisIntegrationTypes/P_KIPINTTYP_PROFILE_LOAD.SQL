@@ -23,7 +23,6 @@ begin
   )
   loop
     bPROFILE := clob2blob(cPROFILE.DATA);
-
     xDOC := PKG_XPATH.PARSE_FROM_BLOB(bPROFILE);
 
     begin
@@ -44,6 +43,7 @@ begin
         P_KIPINTTYP_BASE_INSERT(rKIPINTTYP.CODE, rKIPINTTYP.NAME, rKIPINTTYP.RN);
       end if;
 
+      /* Чтение параметров профиля */
       xLIST := PKG_XPATH.LIST_NODES(xNODE, 'fields/field');
       for i in 1..PKG_XPATH.COUNT_NODES(xLIST) loop
         xNODE := PKG_XPATH.ITEM_NODE(xLIST, i);
@@ -58,7 +58,7 @@ begin
         rKIPINTTYPFLD.BUNDLE := PKG_XPATH.ATTRIBUTE(xNODE, 'bundle');
     
         /* Поиск параметра */
-        FIND_KIPINTTYPFLD_CODE(1, rKIPINTTYPFLD.FLD_CODE, rKIPINTTYPFLD.RN);
+        FIND_KIPINTTYPFLD_CODE(1, rKIPINTTYP.RN, rKIPINTTYPFLD.FLD_CODE, rKIPINTTYPFLD.RN);
         if rKIPINTTYPFLD.RN is not null then
           /* Обновление параметра */
           P_KIPINTTYPFLD_BASE_UPDATE(rKIPINTTYPFLD.RN, rKIPINTTYPFLD.FLD_CODE, rKIPINTTYPFLD.FLD_NAME,
@@ -68,7 +68,14 @@ begin
           P_KIPINTTYPFLD_BASE_INSERT(rKIPINTTYPFLD.PRN, rKIPINTTYPFLD.FLD_CODE, rKIPINTTYPFLD.FLD_NAME,
                                      rKIPINTTYPFLD.ENTRY_TYPE, rKIPINTTYPFLD.DATA_TYPE, rKIPINTTYPFLD.STPOLICY, rKIPINTTYPFLD.BUNDLE, rKIPINTTYPFLD.RN);
         end if;
+
+        insert into IDLIST (ID) values (rKIPINTTYPFLD.RN);
       end loop;
+
+      /* Удаление устаревших параметров */
+      delete from KIPINTTYPFLD
+       where PRN = rKIPINTTYP.RN
+         and RN not in (select ID from IDLIST);
 
       PKG_XPATH.FREE(xDOC);
       dbms_lob.freetemporary(bPROFILE);
