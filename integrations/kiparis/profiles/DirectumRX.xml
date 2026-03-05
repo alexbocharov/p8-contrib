@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kiparisprofile>
+  <!-- Метаданные системы (KIPINTTYP) -->
+  <system code="DIRECTUMRX" name="Интеграция с Directum RX">
+      
+    <fields>
+      <!-- 1. Открытая строка (URL) -->
+      <!-- ENTRY_TYPE: 0 (Manual), DATA_TYPE: 0 (STR), STPOLICY: 0 (Local) -->
+      <field fld_code="api_url" 
+              fld_name="Адрес сервера API (напр. https://rx.company.ru)" 
+              sort_order="1" 
+              entry_type="0" 
+              data_type="0" 
+              stpolicy="0" />
+
+      <!-- 2. Секретный логин (AES-256 в БД) -->
+      <!-- ENTRY_TYPE: 1 (Secret), DATA_TYPE: 0 (STR), STPOLICY: 2 (Hybrid) -->
+      <field fld_code="login" 
+              fld_name="Системный логин" 
+              sort_order="2" 
+              entry_type="1" 
+              data_type="0" 
+              stpolicy="2" 
+              bundle="auth_bundle" />
+
+      <!-- 3. Секретный пароль (Vault) -->
+      <!-- ENTRY_TYPE: 1 (Secret), DATA_TYPE: 0 (STR), STPOLICY: 1 (Vault) -->
+      <field fld_code="password" 
+              fld_name="Системный пароль" 
+              sort_order="3" 
+              entry_type="1" 
+              data_type="0" 
+              stpolicy="2" 
+              bundle="auth_bundle" />
+
+      <!-- 4. Чекбокс (Флаг HRPro) -->
+      <!-- ENTRY_TYPE: 2 (Checkbox), DATA_TYPE: 1 (NUM: 0/1) -->
+      <field fld_code="has_hrpro" 
+              fld_name="Использовать модуль HRPro" 
+              sort_order="4" 
+              entry_type="2" 
+              data_type="1" 
+              stpolicy="0" />
+
+      <!-- 5. Числовой параметр (Порт) -->
+      <!-- ENTRY_TYPE: 0 (Manual), DATA_TYPE: 1 (NUM) -->
+      <field fld_code="api_port" 
+              fld_name="Порт подключения" 
+              sort_order="5" 
+              entry_type="0" 
+              data_type="1" 
+              stpolicy="0" />
+
+      <!-- 6. Дата (Начало синхронизации) -->
+      <!-- ENTRY_TYPE: 0 (Manual), DATA_TYPE: 2 (DATE) -->
+      <field fld_code="sync_start" 
+              fld_name="Дата начала первичной загрузки документов" 
+              sort_order="6" 
+              entry_type="0" 
+              data_type="2" 
+              stpolicy="0" />
+
+      <!-- 7. Итоговый пакет (BUNDLE SELF) -->
+      <!-- Поле, которое заменит login и password после засекречивания -->
+      <field fld_code="auth_bundle" 
+              fld_name="Учетные данные (Защищено в Vault)" 
+              sort_order="7" 
+              entry_type="3" 
+              data_type="0" 
+              stpolicy="1" />
+    </fields>
+  </system>
+</kiparisprofile>
