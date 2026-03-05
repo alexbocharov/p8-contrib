@@ -24,4 +24,5 @@ select
   T.BUNDLE                              -- sBUNDLE
 from
   KIPINTTYPFLD T
-where exists (select null from V_USERPRIV UP where UP.UNITCODE = 'KiparisIntegrationTypes');
+where exists (select null from V_USERPRIV UP where UP.UNITCODE = 'KiparisIntegrationTypes')
+order by T.SORT_ORDER
