@@ -14,6 +14,9 @@ begin
     PKG_IUD.REG_CRN('CRN', :new.CRN, :old.CRN);
     PKG_IUD.REG_JUR_PERS('JUR_PERS', :new.JUR_PERS, :old.JUR_PERS);
     PKG_IUD.REG(1, 'KIPINTTYP', :new.KIPINTTYP, :old.KIPINTTYP);
+    PKG_IUD.REG(2, 'CODE', :new.CODE, :old.CODE);
+    PKG_IUD.REG('NAME', :new.NAME, :old.NAME);
+    PKG_IUD.REG('WORK_MODE', :new.WORK_MODE, :old.WORK_MODE);
     PKG_IUD.REG('IS_ACTIVE', :new.IS_ACTIVE, :old.IS_ACTIVE);
     PKG_IUD.REG('NOTE', :new.NOTE, :old.NOTE);
     PKG_IUD.EPILOGUE;

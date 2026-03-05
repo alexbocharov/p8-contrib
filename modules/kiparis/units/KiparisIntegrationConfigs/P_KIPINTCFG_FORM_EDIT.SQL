@@ -2,20 +2,14 @@
 create or replace procedure P_KIPINTCFG_FORM_EDIT
 (
   nCOMPANY                  in number,       -- Организация
-  sKIPINTTYP_CODE           in varchar2,     -- Код вида интеграции КИПАРИС
-  sKIPINTTYP_NAME           out varchar2     -- Вид интеграции КИПАРИС
+  nACTION                   in number,       -- Действие (0 - добавление, 1 - исправление, 2 - размножение)
+  sCODE                     in out varchar2  -- Мнемокод
 )
 as
 begin
-  begin
-    select T.NAME
-      into sKIPINTTYP_NAME
-      from KIPINTTYP T
-     where T.CODE = sKIPINTTYP_CODE;
-  exception
-    when NO_DATA_FOUND then
-      sKIPINTTYP_NAME := null;
-  end;
+  if sCODE is null or nACTION = 2 then
+    P_KIPINTCFG_GETNEXTCODE(nCOMPANY, sCODE);
+  end if;
 end;
 /
 show errors procedure P_KIPINTCFG_FORM_EDIT;

@@ -7,8 +7,10 @@ create or replace view V_KIPINTCFG
   nJUR_PERS,                            -- Ссылка на юридическое лицо
   sJUR_PERS_CODE,                       -- Принадлежность
   nKIPINTTYP,                           -- Ссылка на вид интеграций КИПАРИС
-  sKIPINTTYP_CODE,                      -- Код
-  sKIPINTTYP_NAME,                      -- Наименование
+  sKIPINTTYP_CODE,                      -- Вид интеграции
+  sCODE,                                -- Мнемокод
+  sNAME,                                -- Наименование
+  nWORK_MODE,                           -- Режим работы
   nIS_ACTIVE,                           -- Активна
   sNOTE                                 -- Примечание
 )
@@ -21,7 +23,9 @@ select
   J.CODE,                               -- sJUR_PERS_CODE
   T.KIPINTTYP,                          -- nKIPINTTYP
   K.CODE,                               -- sKIPINTTYP_CODE
-  K.NAME,                               -- sKIPINTTYP_NAME
+  T.CODE,                               -- sCODE
+  T.NAME,                               -- sNAME
+  T.WORK_MODE,                          -- nWORK_MODE
   T.IS_ACTIVE,                          -- nIS_ACTIVE
   T.NOTE                                -- sNOTE
 from

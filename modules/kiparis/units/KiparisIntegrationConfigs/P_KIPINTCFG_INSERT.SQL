@@ -4,7 +4,10 @@ create or replace procedure P_KIPINTCFG_INSERT
   nCOMPANY                  in number,       -- Организация
   nCRN                      in number,       -- Каталог
   sJUR_PERS_CODE            in varchar2,     -- Принадлежность
-  sKIPINTTYP_CODE           in varchar2,     -- Код
+  sKIPINTTYP_CODE           in varchar2,     -- Вид интеграции
+  sCODE                     in varchar2,     -- Мнемокод
+  sNAME                     in varchar2,     -- Наименование
+  nWORK_MODE                in number,       -- Режим работы
   nIS_ACTIVE                in number,       -- Активна
   sNOTE                     in varchar2,     -- Примечание
   nRN                       out number       -- Регистрационный номер
@@ -33,6 +36,9 @@ begin
     nCRN,
     nJUR_PERS,
     nKIPINTTYP,
+    sCODE,
+    sNAME,
+    nWORK_MODE,
     nIS_ACTIVE,
     sNOTE,
     nRN
