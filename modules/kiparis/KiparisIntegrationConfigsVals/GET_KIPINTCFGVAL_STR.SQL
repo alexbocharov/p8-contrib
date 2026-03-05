@@ -1,4 +1,4 @@
-/* Функция поиска подстроки в CLOB */
+/* Функция получения строкового значения параметра конфигурации */
 create or replace function GET_KIPINTCFGVAL_STR
 (
   nKIPINTCFG              in number,    -- Регистрационный номер конфигурации 
