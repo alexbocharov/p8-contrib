@@ -1,5 +1,7 @@
 # ✨ P8 Contrib
 
+🌐 **Language:** **English** | [Русский](README.ru_RU.md)
+
 ## 📚 **Overview**
 
 Additional modules, extensions, and utilities for the P8 ecosystem.
